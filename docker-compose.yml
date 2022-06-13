@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+
+  web:
+    build: "."
+    command: >
+      gunicorn -b 0.0.0.0:8001
+        --access-logfile -
+        --reload "cctwin.app:create_app()"
+    ports:
+      - "8001:8001"
+    volumes:
+      - ".:/app"
